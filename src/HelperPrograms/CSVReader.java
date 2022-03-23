@@ -1,21 +1,21 @@
+package HelperPrograms;
+
 import java.io.IOException;
 import java.io.FileReader;
 import java.io.BufferedReader;
-
 import java.util.ArrayList;
 
 public class CSVReader {
-    private final String pathToCSV = "src\\default.csv";
-
-    public ArrayList<String> readCSVFile()  {
+    public static ArrayList<String> readCSVFile()  {
         ArrayList<String> rows = new ArrayList<>();
+        String pathToCSV = "default.csv";
 
         try {
             FileReader fReader = new FileReader(pathToCSV);
             BufferedReader bReader = new BufferedReader(fReader);
             String line = bReader.readLine();
             while (line != null) {
-                rows.add(line + "\n");
+                rows.add(line);
                 line = bReader.readLine();
             }
             System.out.println();
