@@ -1,22 +1,22 @@
 package Objects;
 
 public class StudentEnrollment {
-    private final String student;
-    private final String course;
+    private final String studentName;
+    private final String courseName;
     private final String semester;
 
-    public StudentEnrollment(String student, String course, String semester) {
-        this.student = student;
-        this.course = course;
+    public StudentEnrollment(String studentName, String courseName, String semester) {
+        this.studentName = studentName;
+        this.courseName = courseName;
         this.semester = semester;
     }
 
-    public String getStudent() {
-        return student;
+    public String getStudentName() {
+        return studentName;
     }
 
-    public String getCourse() {
-        return course;
+    public String getCourseName() {
+        return courseName;
     }
 
     public String getSemester() {
@@ -25,10 +25,7 @@ public class StudentEnrollment {
 
     @Override
     public String toString() {
-        return "Enrollment Information {\n" +
-                "student name: " + student + "\n" +
-                "course name: " + course + "\n" +
-                "semester code: " + semester +
-                "\n}" + "\n";
+        return "Enrollment Information {\n" + "+ student name: " + studentName + "\n" +
+                "+ course name: " + courseName + "\n" + "+ semester code: " + semester + "\n}" + "\n";
     }
 }

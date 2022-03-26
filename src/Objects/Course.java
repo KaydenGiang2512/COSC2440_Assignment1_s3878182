@@ -15,16 +15,13 @@ public class Course {
         return this.courseID;
     }
 
-    public String getName() { return this.courseName; }
+    public String getCourseName() { return this.courseName; }
 
     public int getNumberOfCredits() { return this.numberOfCredits; }
 
     @Override
     public String toString() {
-        return "Course Information {\n" +
-                "course id: " + courseID + "\n" +
-                "course name: " + courseName + "\n" +
-                "number of credits: " + numberOfCredits +
-                "\n}" + "\n";
+        return "Course Information {\n" + "+ course id: " + courseID + "\n" +
+                "+ course name: " + courseName + "\n" + "+ number of credits: " + numberOfCredits + "\n}" + "\n";
     }
 }

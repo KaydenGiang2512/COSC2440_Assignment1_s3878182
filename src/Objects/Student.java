@@ -13,19 +13,15 @@ public class Student {
 
     public String getStudentID() { return this.studentID; }
 
-    public String getName() {
+    public String getStudentName() {
         return this.studentName;
     }
 
     public String getBirthDate() { return this.birthDate; }
 
-
     @Override
     public String toString() {
-        return "Student Information {\n" +
-                "student id: " + studentID + "\n" +
-                "student name: " + studentName + "\n" +
-                "date of birth (MM/DD/YYYY): " + birthDate +
-                "\n}" + "\n";
+        return "Student Information {\n" + "+ student id: " + studentID + "\n" +
+                "+ student name: " + studentName + "\n" + "+ date of birth (MM/DD/YYYY): " + birthDate + "\n}" + "\n";
     }
 }

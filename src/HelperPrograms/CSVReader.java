@@ -6,7 +6,7 @@ import java.io.BufferedReader;
 import java.util.ArrayList;
 
 public class CSVReader {
-    public static ArrayList<String> readCSVFile()  {
+    public static ArrayList<String> readDefaultCSVFile()  {
         ArrayList<String> rows = new ArrayList<>();
         String pathToCSV = "default.csv";
 
