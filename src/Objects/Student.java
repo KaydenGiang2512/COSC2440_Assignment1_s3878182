@@ -24,4 +24,8 @@ public class Student {
         return "Student Information {\n" + "+ student id: " + studentID + "\n" +
                 "+ student name: " + studentName + "\n" + "+ date of birth (MM/DD/YYYY): " + birthDate + "\n}" + "\n";
     }
+
+    public String convertToCSVRow() {
+        return String.join(",", studentID, studentName, birthDate + "\n");
+    }
 }

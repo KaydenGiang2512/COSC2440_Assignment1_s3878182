@@ -6,9 +6,14 @@ import java.io.BufferedReader;
 import java.util.ArrayList;
 
 public class CSVReader {
-    public static ArrayList<String> readDefaultCSVFile()  {
+    private String pathToCSV;
+
+    public CSVReader(String pathToCSV) {
+        this.pathToCSV = pathToCSV;
+    }
+
+    public ArrayList<String> readCSVFile()  {
         ArrayList<String> rows = new ArrayList<>();
-        String pathToCSV = "default.csv";
 
         try {
             FileReader fReader = new FileReader(pathToCSV);
