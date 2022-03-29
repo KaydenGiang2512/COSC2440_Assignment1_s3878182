@@ -9,8 +9,9 @@ import java.util.List;
 public class StudentFileHandler {
     public ArrayList<Student> populateStudentData() {
         ArrayList<Student> listOfStudents = new ArrayList<>();
+        CSVReader reader = new CSVReader("default.csv");
 
-        for (String studentInfo : CSVReader.readDefaultCSVFile()) {
+        for (String studentInfo : reader.readCSVFile()) {
             String[] data = studentInfo.split(",");
             String studentID = data[0];
             String studentName = data[1];
