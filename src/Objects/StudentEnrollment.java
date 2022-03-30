@@ -28,4 +28,8 @@ public class StudentEnrollment {
         return "Enrollment Information {\n" + "+ student name: " + studentName + "\n" +
                 "+ course name: " + courseName + "\n" + "+ semester code: " + semester + "\n}" + "\n";
     }
+
+    public String convertToCSVRow() {
+        return String.join(",", studentName, courseName, semester + "\n");
+    }
 }
