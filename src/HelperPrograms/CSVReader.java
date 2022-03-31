@@ -6,13 +6,13 @@ import java.io.BufferedReader;
 import java.util.ArrayList;
 
 public class CSVReader {
-    private String pathToCSV;
+    private final String pathToCSV;
 
     public CSVReader(String pathToCSV) {
         this.pathToCSV = pathToCSV;
     }
 
-    public ArrayList<String> readCSVFile()  {
+    public ArrayList<String> readCSVFile() {
         ArrayList<String> rows = new ArrayList<>();
 
         try {
@@ -26,8 +26,8 @@ public class CSVReader {
             System.out.println();
             fReader.close();
             bReader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ioe) {
+            System.out.println("An error has occurred!");
         }
         return rows;
     }

@@ -24,4 +24,8 @@ public class Course {
         return "Course Information {\n" + "+ course id: " + courseID + "\n" +
                 "+ course name: " + courseName + "\n" + "+ number of credits: " + numberOfCredits + "\n}" + "\n";
     }
+
+    public String convertToCSVRow() {
+        return String.join(",", courseID, courseName, numberOfCredits + "\n");
+    }
 }

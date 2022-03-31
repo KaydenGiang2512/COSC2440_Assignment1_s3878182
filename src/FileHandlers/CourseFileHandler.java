@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CourseFileHandler {
-    public ArrayList<Course> populateCourseData() {
+    public String populateCourseData() {
         ArrayList<Course> listOfCourses = new ArrayList<>();
         CSVReader reader = new CSVReader("default.csv");
 
@@ -23,7 +23,8 @@ public class CourseFileHandler {
                 listOfCourses.add(course);
             }
         }
-        return listOfCourses;
+        return listOfCourses.toString().replace("[", "").replace(", ", "".indent(-1))
+                .replace("\n]", "");
     }
 
     private static boolean courseAlreadyExist(String courseID, String courseName,

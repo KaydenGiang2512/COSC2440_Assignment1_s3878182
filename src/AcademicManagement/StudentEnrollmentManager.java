@@ -9,8 +9,6 @@ public interface StudentEnrollmentManager {
 
     void deleteEnrollment(String studentID, String courseID, String semester);
 
-    void updateEnrollment(String studentID, String courseID, String semester);
-
     StudentEnrollment getOneEnrollment(String studentID, String courseID, String semester);
 
     List<StudentEnrollment> getAllEnrollments();
