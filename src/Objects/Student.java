@@ -21,7 +21,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student Information {\n" + "+ student id: " + studentID + "\n" +
+        return "- Student Information {\n" + "+ student id: " + studentID + "\n" +
                 "+ student name: " + studentName + "\n" + "+ date of birth (MM/DD/YYYY): " + birthDate + "\n}" + "\n";
     }
 
