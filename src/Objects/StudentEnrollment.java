@@ -1,22 +1,22 @@
 package Objects;
 
 public class StudentEnrollment {
-    private final String studentName;
-    private final String courseName;
+    private final Student student;
+    private final Course course;
     private final String semester;
 
-    public StudentEnrollment(String studentName, String courseName, String semester) {
-        this.studentName = studentName;
-        this.courseName = courseName;
+    public StudentEnrollment(Student student, Course course, String semester) {
+        this.student = student;
+        this.course = course;
         this.semester = semester;
     }
 
-    public String getStudentName() {
-        return studentName;
+    public Student getStudentName() {
+        return student;
     }
 
-    public String getCourseName() {
-        return courseName;
+    public Course getCourseName() {
+        return course;
     }
 
     public String getSemester() {
@@ -25,11 +25,12 @@ public class StudentEnrollment {
 
     @Override
     public String toString() {
-        return "Enrollment Information {\n" + "+ student name: " + studentName + "\n" +
-                "+ course name: " + courseName + "\n" + "+ semester code: " + semester + "\n}" + "\n";
+        return "Enrollment Information {\n" + student + "\n" + course + "\n"
+                + "+ semester code: " + semester + "\n}" + "\n";
     }
 
     public String convertToCSVRow() {
-        return String.join(",", studentName, courseName, semester + "\n");
+        return String.join(",", student.getStudentID(), student.getStudentName(), student.getBirthDate(),
+                course.getCourseID(), course.getCourseName(), course.getNumberOfCredits() + "\n");
     }
 }

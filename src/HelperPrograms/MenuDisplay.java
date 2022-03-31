@@ -59,7 +59,7 @@ public class MenuDisplay {
                     System.out.println("**********************************");
                     TimeUnit.SECONDS.sleep(1);
                     StudentFileHandler s = new StudentFileHandler();
-                    System.out.println(s.populateStudentData());
+                    System.out.println(s.displayAllStudents());
                     isRunning = false;
                     TimeUnit.SECONDS.sleep(1);
                     restartProgram();
@@ -70,7 +70,7 @@ public class MenuDisplay {
                     System.out.println("*********************************");
                     TimeUnit.SECONDS.sleep(1);
                     CourseFileHandler c = new CourseFileHandler();
-                    System.out.println(c.populateCourseData());
+                    System.out.println(c.displayAllCourses());
                     isRunning = false;
                     TimeUnit.SECONDS.sleep(1);
                     restartProgram();
@@ -81,7 +81,7 @@ public class MenuDisplay {
                     System.out.println("*************************************");
                     TimeUnit.SECONDS.sleep(1);
                     EnrollmentFileHandler e = new EnrollmentFileHandler();
-                    System.out.println(e.populateEnrollmentData());
+                    System.out.println(e.displayAllEnrollments());
                     isRunning = false;
                     TimeUnit.SECONDS.sleep(1);
                     restartProgram();

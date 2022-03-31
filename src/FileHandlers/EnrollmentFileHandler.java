@@ -1,34 +1,35 @@
 package FileHandlers;
 
 import HelperPrograms.CSVReader;
+import Objects.Course;
+import Objects.Student;
 import Objects.StudentEnrollment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class EnrollmentFileHandler {
-    public String populateEnrollmentData() {
+    public ArrayList<StudentEnrollment> populateEnrollmentData() {
         ArrayList<StudentEnrollment> listOfEnrollments = new ArrayList<>();
         CSVReader reader = new CSVReader("default.csv");
 
         for (String enrollmentInfo : reader.readCSVFile()) {
             String[] data = enrollmentInfo.split(",");
-            String studentName = data[1];
-            String courseName = data[4];
+            Student student = new Student(data[0], data[1], data[2]);
+            Course course = new Course(data[3], data[4], Integer.parseInt(data[5]));
             String semester = data[6];
 
-            StudentEnrollment enrollment = new StudentEnrollment(studentName, courseName, semester);
+            StudentEnrollment enrollment = new StudentEnrollment(student, course, semester);
 
-            if (!enrollmentAlreadyExist(studentName, courseName, semester, listOfEnrollments)) {
+            if (!enrollmentAlreadyExist(student, course, semester, listOfEnrollments)) {
                 listOfEnrollments.add(enrollment);
             }
         }
-        return listOfEnrollments.toString().replace("[", "").replace(", ", "".indent(-1))
-                .replace("\n]", "");
+        return listOfEnrollments;
     }
 
-    private static boolean enrollmentAlreadyExist(String studentName, String courseName,
-                                               String semester, List<StudentEnrollment> listOfEnrollments) {
+    private static boolean enrollmentAlreadyExist(Student studentName, Course courseName,
+                                                  String semester, List<StudentEnrollment> listOfEnrollments) {
         for (StudentEnrollment e : listOfEnrollments) {
             if (e.getStudentName().equals(studentName) &&
                     e.getCourseName().equals(courseName) && e.getSemester().equals(semester)) {
@@ -36,5 +37,10 @@ public class EnrollmentFileHandler {
             }
         }
         return false;
+    }
+
+    public String displayAllEnrollments() {
+        return populateEnrollmentData().toString().replace("[", "").replace(", ", "\n".indent(-1))
+                .replace("\n]", "");
     }
 }

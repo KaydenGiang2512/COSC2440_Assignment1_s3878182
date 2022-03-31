@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentFileHandler {
-    public String populateStudentData() {
+    public ArrayList<Student> populateStudentData() {
         ArrayList<Student> listOfStudents = new ArrayList<>();
         CSVReader reader = new CSVReader("default.csv");
 
@@ -23,8 +23,7 @@ public class StudentFileHandler {
                 listOfStudents.add(student);
             }
         }
-        return listOfStudents.toString().replace("[", "").replace(", ", "".indent(-1))
-                .replace("\n]", "");
+        return listOfStudents;
     }
 
     private static boolean studentAlreadyExist(String studentID, String studentName,
@@ -36,5 +35,10 @@ public class StudentFileHandler {
             }
         }
         return false;
+    }
+
+    public String displayAllStudents() {
+        return populateStudentData().toString().replace("[", "").replace(", ", "\n".indent(-1))
+                .replace("\n]", "");
     }
 }
