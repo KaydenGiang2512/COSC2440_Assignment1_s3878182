@@ -31,6 +31,6 @@ public class StudentEnrollment {
 
     public String convertToCSVRow() {
         return String.join(",", student.getStudentID(), student.getStudentName(), student.getBirthDate(),
-                course.getCourseID(), course.getCourseName(), course.getNumberOfCredits() + "\n");
+                course.getCourseID(), course.getCourseName(), Integer.toString(course.getNumberOfCredits()), semester  + "\n");
     }
 }
