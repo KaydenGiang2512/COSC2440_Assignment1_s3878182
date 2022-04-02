@@ -1,7 +1,7 @@
 package AcademicManagement;
 
 import Objects.StudentEnrollment;
-import java.util.List;
+import java.util.ArrayList;
 
 public interface StudentEnrollmentManager {
 
@@ -11,5 +11,5 @@ public interface StudentEnrollmentManager {
 
     StudentEnrollment getOneEnrollment(String studentID, String courseID, String semester);
 
-    List<StudentEnrollment> getAllEnrollments();
+    ArrayList<StudentEnrollment> getAllEnrollments();
 }

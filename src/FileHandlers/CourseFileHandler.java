@@ -36,9 +36,4 @@ public class CourseFileHandler {
         }
         return false;
     }
-
-    public String displayAllCourses() {
-        return populateCourseData().toString().replace("[", "").replace(", ", "\n".indent(-1))
-                .replace("\n]", "");
-    }
 }

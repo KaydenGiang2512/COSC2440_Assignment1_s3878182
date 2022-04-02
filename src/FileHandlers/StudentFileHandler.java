@@ -36,9 +36,4 @@ public class StudentFileHandler {
         }
         return false;
     }
-
-    public String displayAllStudents() {
-        return populateStudentData().toString().replace("[", "").replace(", ", "\n".indent(-1))
-                .replace("\n]", "");
-    }
 }

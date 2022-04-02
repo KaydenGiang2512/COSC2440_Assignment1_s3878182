@@ -1,8 +1,6 @@
 package HelperPrograms;
 
-import FileHandlers.CourseFileHandler;
-import FileHandlers.EnrollmentFileHandler;
-import FileHandlers.StudentFileHandler;
+import AcademicManagement.AcademicManager;
 
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
@@ -58,8 +56,8 @@ public class MenuDisplay {
                     System.out.println("Retrieving all data of students...");
                     System.out.println("**********************************");
                     TimeUnit.SECONDS.sleep(1);
-                    StudentFileHandler s = new StudentFileHandler();
-                    System.out.println(s.displayAllStudents());
+                    AcademicManager admin = new AcademicManager();
+                    System.out.println(admin.displayAllStudents());
                     isRunning = false;
                     TimeUnit.SECONDS.sleep(1);
                     restartProgram();
@@ -69,8 +67,8 @@ public class MenuDisplay {
                     System.out.println("Retrieving all data of courses...");
                     System.out.println("*********************************");
                     TimeUnit.SECONDS.sleep(1);
-                    CourseFileHandler c = new CourseFileHandler();
-                    System.out.println(c.displayAllCourses());
+                    AcademicManager admin = new AcademicManager();
+                    System.out.println(admin.displayAllCourses());
                     isRunning = false;
                     TimeUnit.SECONDS.sleep(1);
                     restartProgram();
@@ -80,8 +78,8 @@ public class MenuDisplay {
                     System.out.println("Retrieving all data of enrollments...");
                     System.out.println("*************************************");
                     TimeUnit.SECONDS.sleep(1);
-                    EnrollmentFileHandler e = new EnrollmentFileHandler();
-                    System.out.println(e.displayAllEnrollments());
+                    AcademicManager admin = new AcademicManager();
+                    System.out.println(admin.displayAllEnrollments());
                     isRunning = false;
                     TimeUnit.SECONDS.sleep(1);
                     restartProgram();
@@ -97,7 +95,7 @@ public class MenuDisplay {
         }
     }
 
-    public static void quitProgram () throws InterruptedException {
+    private static void quitProgram () throws InterruptedException {
         System.out.println("\n*****************************************");
         System.out.println("Exiting program... goodbye Administrator!");
         System.out.println("*****************************************");
@@ -105,7 +103,7 @@ public class MenuDisplay {
         System.exit(0);
     }
 
-    public static void restartProgram () throws InterruptedException {
+    private static void restartProgram () throws InterruptedException {
         TimeUnit.SECONDS.sleep(1);
         System.out.print("\nDo you wish to run this program again? (Y/N): ");
         Scanner sc = new Scanner(System.in);
@@ -148,9 +146,6 @@ public class MenuDisplay {
             TimeUnit.SECONDS.sleep(1);
             userInterface();
         } else if (choice.equals("2")) {
-            System.out.println("\n********************************************");
-            System.out.println("nothing implemented yet. Come back later :))");
-            System.out.println("********************************************");
             TimeUnit.SECONDS.sleep(1);
             userInterface();
         } else {

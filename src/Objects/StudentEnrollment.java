@@ -11,11 +11,11 @@ public class StudentEnrollment {
         this.semester = semester;
     }
 
-    public Student getStudentName() {
+    public Student getStudent() {
         return student;
     }
 
-    public Course getCourseName() {
+    public Course getCourse() {
         return course;
     }
 
@@ -25,12 +25,13 @@ public class StudentEnrollment {
 
     @Override
     public String toString() {
-        return "Enrollment Information {\n" + student + "\n" + course + "\n"
-                + "+ semester code: " + semester + "\n}" + "\n";
+        return "Enrollment Information {\n" + "\n" + student.toString().indent(2) + "\n" + course.toString().indent(2)
+                + "\n" + "  - Semester code: " + semester + "\n}" + "\n";
     }
 
     public String convertToCSVRow() {
-        return String.join(",", student.getStudentID(), student.getStudentName(), student.getBirthDate(),
-                course.getCourseID(), course.getCourseName(), course.getNumberOfCredits() + "\n");
+        return String.join(",", student.getStudentID(), student.getStudentName(),
+                student.getBirthDate(), course.getCourseID(), course.getCourseName(),
+                Integer.toString(course.getNumberOfCredits()), semester + "\n");
     }
 }

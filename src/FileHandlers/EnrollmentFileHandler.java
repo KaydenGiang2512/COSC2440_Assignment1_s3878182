@@ -28,19 +28,14 @@ public class EnrollmentFileHandler {
         return listOfEnrollments;
     }
 
-    private static boolean enrollmentAlreadyExist(Student studentName, Course courseName,
+    private static boolean enrollmentAlreadyExist(Student student, Course course,
                                                   String semester, List<StudentEnrollment> listOfEnrollments) {
         for (StudentEnrollment e : listOfEnrollments) {
-            if (e.getStudentName().equals(studentName) &&
-                    e.getCourseName().equals(courseName) && e.getSemester().equals(semester)) {
+            if (e.getStudent().equals(student) &&
+                    e.getCourse().equals(course) && e.getSemester().equals(semester)) {
                 return true;
             }
         }
         return false;
-    }
-
-    public String displayAllEnrollments() {
-        return populateEnrollmentData().toString().replace("[", "").replace(", ", "\n".indent(-1))
-                .replace("\n]", "");
     }
 }
