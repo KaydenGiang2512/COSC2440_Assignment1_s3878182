@@ -4,11 +4,10 @@ import HelperPrograms.CSVReader;
 import Objects.Course;
 import Objects.Student;
 import Objects.StudentEnrollment;
-import FileHandlers.StudentFileHandler;
-import FileHandlers.CourseFileHandler;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class EnrollmentFileHandler {
     public ArrayList<StudentEnrollment> populateEnrollmentData() {
@@ -42,15 +41,18 @@ public class EnrollmentFileHandler {
         return false;
     }
 
-    public ArrayList<StudentEnrollment> populateOneEnrollmentFromData() {
+    public ArrayList<StudentEnrollment> populateOneEnrollmentFromData() throws InterruptedException {
         ArrayList<StudentEnrollment> allEnrollments = populateEnrollmentData();
         ArrayList<StudentEnrollment> singleEnrollment = new ArrayList<>();
-        ArrayList<String> userInputs = gatherEnrollmentFromUserInput();
+
+        String studentID = gatherStudentFromUserInput();
+        String courseID = gatherCourseFromUserInput();
+        String semester = gatherSemesterFromUserInput();
 
         for (StudentEnrollment enrollment : allEnrollments) {
-            if (enrollment.getStudent().getStudentID().equalsIgnoreCase(userInputs.get(0)) &&
-                    enrollment.getCourse().getCourseID().equalsIgnoreCase(userInputs.get(1)) &&
-                    enrollment.getSemester().equalsIgnoreCase(userInputs.get(2))) {
+            if (enrollment.getStudent().getStudentID().equalsIgnoreCase(studentID) &&
+                    enrollment.getCourse().getCourseID().equalsIgnoreCase(courseID) &&
+                    enrollment.getSemester().equalsIgnoreCase(semester)) {
                 singleEnrollment.add(enrollment);
             }
         }
@@ -62,46 +64,142 @@ public class EnrollmentFileHandler {
         System.out.println("\n********************************************");
         System.out.println("Retrieving data of the queried enrollment...");
         System.out.println("********************************************\n");
+        TimeUnit.SECONDS.sleep(1);
         return singleEnrollment;
     }
 
-//    public boolean addOne() {
-//        ArrayList<StudentEnrollment> allEnrollments = populateEnrollmentData();
-//        ArrayList<String> userInputs = gatherEnrollmentFromUserInput();
-//
-//        for (StudentEnrollment enrollment : allEnrollments) {
-//            if (enrollment.getStudent().getStudentID().equalsIgnoreCase(userInputs.get(0)) &&
-//            enrollment.getCourse().getCourseID().equalsIgnoreCase(userInputs.get(1)) ) {
-//
-//            }
-//        }
-//        return true;
-//    }
+    public boolean addOne() {
+        ArrayList<StudentEnrollment> allEnrollments = populateEnrollmentData();
 
-//    public ArrayList<Course> allCoursesInSemester() {
-//        ArrayList<StudentEnrollment> allEnrollments = populateEnrollmentData();
-//
-//
-//    }
+        String studentID = gatherStudentFromUserInput();
+        String courseID = gatherCourseFromUserInput();
+        String semester = gatherSemesterFromUserInput();
 
-    public static ArrayList<String> gatherEnrollmentFromUserInput() {
-        ArrayList<String> inputs = new ArrayList<>();
+        for (StudentEnrollment enrollment : allEnrollments) {
+            if (enrollment.getStudent().getStudentID().equalsIgnoreCase(studentID)
+                    && enrollment.getCourse().getCourseID().equalsIgnoreCase(courseID)
+                    && !enrollment.getSemester().equalsIgnoreCase(semester)) {
+                allEnrollments.add(enrollment);
+                System.out.println("Enrollment is successfully added!");
+                return true;
+            } else {
+                System.out.println("This enrollment already exists/student or course is not in database!");
+                return false;
+            }
+        }
+        return false;
+    }
 
+    public boolean deleteOne() {
+        ArrayList<StudentEnrollment> allEnrollments = populateEnrollmentData();
+
+        String studentID = gatherStudentFromUserInput();
+        String courseID = gatherCourseFromUserInput();
+        String semester = gatherSemesterFromUserInput();
+
+        for (StudentEnrollment enrollment : allEnrollments) {
+            if (enrollment.getStudent().getStudentID().equalsIgnoreCase(studentID)
+                    && enrollment.getCourse().getCourseID().equalsIgnoreCase(courseID)
+                    && enrollment.getSemester().equalsIgnoreCase(semester)) {
+                allEnrollments.remove(enrollment);
+                System.out.println("Enrollment is successfully deleted!");
+                return true;
+            } else {
+                System.out.println("This enrollment does not exist/student or course is not in database!");
+                return false;
+            }
+        }
+        return false;
+    }
+
+    public ArrayList<Course> allCourseForStudentInSemester() throws InterruptedException {
+        ArrayList<StudentEnrollment> allEnrollments = populateEnrollmentData();
+        ArrayList<Course> coursesForStudentInSemester = new ArrayList<>();
+
+        String studentID = gatherStudentFromUserInput();
+        String semester = gatherSemesterFromUserInput();
+
+        for (StudentEnrollment enrollment : allEnrollments) {
+            if (enrollment.getStudent().getStudentID().equalsIgnoreCase(studentID)
+                    && enrollment.getSemester().equalsIgnoreCase(semester)) {
+                coursesForStudentInSemester.add(enrollment.getCourse());
+            }
+        }
+        System.out.println("\n***************************************************************************");
+        System.out.println("Retrieving data of all courses from that student in the queried semester...");
+        System.out.println("***************************************************************************\n");
+        TimeUnit.SECONDS.sleep(1);
+        return coursesForStudentInSemester;
+    }
+
+    public ArrayList<Student> allStudentsInCourseInSemester() throws InterruptedException {
+        ArrayList<StudentEnrollment> allEnrollments = populateEnrollmentData();
+        ArrayList<Student> studentsInCourseInSemester = new ArrayList<>();
+
+        String courseID = gatherCourseFromUserInput();
+        String semester = gatherSemesterFromUserInput();
+
+        for (StudentEnrollment enrollment : allEnrollments) {
+            if (enrollment.getCourse().getCourseID().equalsIgnoreCase(courseID)
+                    && enrollment.getSemester().equalsIgnoreCase(semester))  {
+                studentsInCourseInSemester.add(enrollment.getStudent());
+            }
+        }
+        System.out.println("\n*************************************************************************");
+        System.out.println("Retrieving data of all students in that course in the queried semester...");
+        System.out.println("*************************************************************************\n");
+        TimeUnit.SECONDS.sleep(1);
+        return studentsInCourseInSemester;
+    }
+
+    public ArrayList<Course> allCoursesInSemester() throws InterruptedException {
+        ArrayList<StudentEnrollment> allEnrollments = populateEnrollmentData();
+        ArrayList<Course> coursesInSemester = new ArrayList<>();
+
+        String semester = gatherSemesterFromUserInput();
+
+        for (StudentEnrollment enrollment : allEnrollments) {
+            if (!checkCourseDuplication(enrollment, coursesInSemester) &&
+                    enrollment.getSemester().equalsIgnoreCase(semester)) {
+                coursesInSemester.add(enrollment.getCourse());
+            }
+        }
+        System.out.println("\n*********************************************************");
+        System.out.println("Retrieving data of all courses in the queried semester...");
+        System.out.println("*********************************************************\n");
+        TimeUnit.SECONDS.sleep(1);
+        return coursesInSemester;
+    }
+
+    private static boolean checkCourseDuplication(StudentEnrollment enrollment,
+                                                  ArrayList<Course> coursesInSemester) {
+        for (Course c : coursesInSemester) {
+            if (c.getCourseID().equals(enrollment.getCourse().getCourseID())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static String gatherStudentFromUserInput() {
         System.out.print("Please enter a student ID (ex. s000000): ");
         Scanner sc1 = new Scanner(System.in);
-        String studentID = sc1.nextLine();
+
+        return sc1.nextLine();
+    }
+
+    public static String gatherCourseFromUserInput() {
         System.out.print("Please enter a course ID (ex. COSC0000): ");
         Scanner sc2 = new Scanner(System.in);
-        String courseID = sc2.nextLine();
+
+        return sc2.nextLine();
+    }
+
+    public static String gatherSemesterFromUserInput() {
         System.out.print("Please enter a semester (ex. 2022A): ");
         Scanner sc3 = new Scanner(System.in);
-        String semester = sc3.nextLine();
 
-        inputs.add(studentID);
-        inputs.add(courseID);
-        inputs.add(semester);
-
-        return inputs;
+        return sc3.nextLine();
     }
 }
 

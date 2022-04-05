@@ -6,15 +6,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class CSVWriter {
-    private final String fileName;
-
-    public CSVWriter(String fileName) {
-        this.fileName = fileName;
-    }
-
     public File createNewCSVFile() {
+        String fileName = gatherFileNameFromUserInput();
         File newCSVFile = new File(fileName);
 
         try {
@@ -26,11 +22,10 @@ public class CSVWriter {
     }
 
     public void writeDataToCSV() {
-        createNewCSVFile();
         ArrayList<StudentEnrollment> dataList = new ArrayList<>();
 
         try {
-            FileWriter writer = new FileWriter(fileName);
+            FileWriter writer = new FileWriter(createNewCSVFile());
             StringBuilder builder = new StringBuilder();
             for (StudentEnrollment e : dataList) {
                 builder.append(e.convertToCSVRow());
@@ -42,4 +37,13 @@ public class CSVWriter {
             System.out.println("An error has occurred!");
         }
     }
+
+    public String gatherFileNameFromUserInput() {
+        System.out.print("Please enter desired file name: ");
+        Scanner sc = new Scanner(System.in);
+
+        return sc.nextLine();
+    }
+
+
 }

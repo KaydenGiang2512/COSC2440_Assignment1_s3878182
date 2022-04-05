@@ -19,7 +19,13 @@ public class MenuDisplay {
         System.out.println("| 1/ View all students in the database                                            |");
         System.out.println("| 2/ View all courses in the database                                             |");
         System.out.println("| 3/ View all enrollments in the database                                         |");
-        System.out.println("| 4/ View a particular enrollment in the database                                 |");
+        System.out.println("| 4/ Add a new enrollment to the database                                         |");
+        System.out.println("| 5/ Remove an existing enrollment from the database                              |");
+        System.out.println("| 6/ View a particular enrollment in the database                                 |");
+        System.out.println("| 7/ View all available courses for a particular student in a semester            |");
+        System.out.println("| 8/ View all students in a particular course in a semester                       |");
+        System.out.println("| 9/ View all available courses in a semester                                     |");
+        System.out.println("|                                                                                 |");
         System.out.println("| 0/ Terminate all processes & quit the program                                   |");
         System.out.println("+---------------------------------------------------------------------------------+");
         System.out.print("> Your selection: ");
@@ -87,7 +93,42 @@ public class MenuDisplay {
                 }
                 case "4" -> {
                     AcademicManager admin = new AcademicManager();
+                    System.out.println(admin.addNewEnrollment());
+                    isRunning = false;
+                    TimeUnit.SECONDS.sleep(1);
+                    restartProgram();
+                }
+                case "5" -> {
+                    AcademicManager admin = new AcademicManager();
+                    System.out.println(admin.deleteExistingEnrollment());
+                    isRunning = false;
+                    TimeUnit.SECONDS.sleep(1);
+                    restartProgram();
+                }
+                case "6" -> {
+                    AcademicManager admin = new AcademicManager();
                     System.out.println(admin.displayOneEnrollment());
+                    isRunning = false;
+                    TimeUnit.SECONDS.sleep(1);
+                    restartProgram();
+                }
+                case "7" -> {
+                    AcademicManager admin = new AcademicManager();
+                    System.out.println(admin.displayAllCoursesForStudentInSemester());
+                    isRunning = false;
+                    TimeUnit.SECONDS.sleep(1);
+                    restartProgram();
+                }
+                case "8" -> {
+                    AcademicManager admin = new AcademicManager();
+                    System.out.println(admin.displayAllStudentsInCourseInSemester());
+                    isRunning = false;
+                    TimeUnit.SECONDS.sleep(1);
+                    restartProgram();
+                }
+                case "9" -> {
+                    AcademicManager admin = new AcademicManager();
+                    System.out.println(admin.displayAllCoursesInSemester());
                     isRunning = false;
                     TimeUnit.SECONDS.sleep(1);
                     restartProgram();

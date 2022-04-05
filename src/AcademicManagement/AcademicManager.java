@@ -11,22 +11,24 @@ import java.util.ArrayList;
 
 public class AcademicManager implements StudentEnrollmentManager {
     @Override
-    public void addNewEnrollment() {
-
+    public boolean addNewEnrollment() {
+        EnrollmentFileHandler efh = new EnrollmentFileHandler();
+        return efh.addOne();
     }
 
     @Override
-    public void deleteEnrollment() {
-
+    public boolean deleteExistingEnrollment() {
+        EnrollmentFileHandler efh = new EnrollmentFileHandler();
+        return efh.deleteOne();
     }
 
     @Override
-    public ArrayList<StudentEnrollment> getOneEnrollment() {
+    public ArrayList<StudentEnrollment> getOneEnrollment() throws InterruptedException {
         EnrollmentFileHandler efh = new EnrollmentFileHandler();
         return efh.populateOneEnrollmentFromData();
     }
 
-    public String displayOneEnrollment() {
+    public String displayOneEnrollment() throws InterruptedException {
         return getOneEnrollment().toString().
                 replace("[", "").replace("\n]", "");
     }
@@ -60,5 +62,35 @@ public class AcademicManager implements StudentEnrollmentManager {
     public String displayAllCourses() {
         return getAllCourses().toString().replace("[", "").replace(", ", "\n".indent(-1))
                 .replace("\n]", "");
+    }
+
+    public ArrayList<Course> getAllCoursesForStudentInSemester() throws InterruptedException {
+        EnrollmentFileHandler efh = new EnrollmentFileHandler();
+        return efh.allCourseForStudentInSemester();
+    }
+
+    public String displayAllCoursesForStudentInSemester() throws InterruptedException {
+        return getAllCoursesForStudentInSemester().toString().replace("[", "")
+                .replace(", ", "\n".indent(-1)).replace("\n]", "");
+    }
+
+    public ArrayList<Student> getAllStudentsInCourseInSemester() throws InterruptedException {
+        EnrollmentFileHandler efh = new EnrollmentFileHandler();
+        return efh.allStudentsInCourseInSemester();
+    }
+
+    public String displayAllStudentsInCourseInSemester() throws InterruptedException {
+        return getAllStudentsInCourseInSemester().toString().replace("[", "")
+                .replace(", ", "\n".indent(-1)).replace("\n]", "");
+    }
+
+    public ArrayList<Course> getAllCoursesInSemester() throws InterruptedException {
+        EnrollmentFileHandler efh = new EnrollmentFileHandler();
+        return efh.allCoursesInSemester();
+    }
+
+    public String displayAllCoursesInSemester() throws InterruptedException {
+        return getAllCoursesInSemester().toString().replace("[", "")
+                .replace(", ", "\n".indent(-1)).replace("\n]", "");
     }
 }

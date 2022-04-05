@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public interface StudentEnrollmentManager {
 
-    void addNewEnrollment();
+    boolean addNewEnrollment();
 
-    void deleteEnrollment();
+    boolean deleteExistingEnrollment();
 
-    ArrayList<StudentEnrollment> getOneEnrollment();
+    ArrayList<StudentEnrollment> getOneEnrollment() throws InterruptedException;
 
     ArrayList<StudentEnrollment> getAllEnrollments();
 }
