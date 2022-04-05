@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public interface StudentEnrollmentManager {
 
-    void addNewEnrollment(String studentID, String courseID, String semester);
+    void addNewEnrollment();
 
-    void deleteEnrollment(String studentID, String courseID, String semester);
+    void deleteEnrollment();
 
-    StudentEnrollment getOneEnrollment(String studentID, String courseID, String semester);
+    ArrayList<StudentEnrollment> getOneEnrollment();
 
     ArrayList<StudentEnrollment> getAllEnrollments();
 }

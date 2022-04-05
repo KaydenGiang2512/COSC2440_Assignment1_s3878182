@@ -26,6 +26,7 @@ public class Student {
     }
 
     public String convertToCSVRow() {
-        return String.join(",", studentID, studentName, birthDate + "\n");
+        return String.join(",", studentID,
+                studentName, birthDate + "\n");
     }
 }

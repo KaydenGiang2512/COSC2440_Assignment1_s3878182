@@ -7,11 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CourseFileHandler {
+
     public ArrayList<Course> populateCourseData() {
         ArrayList<Course> listOfCourses = new ArrayList<>();
-        CSVReader reader = new CSVReader("default.csv");
+        CSVReader reader = new CSVReader();
+        ArrayList<String> dataList = new ArrayList<>(reader.readCSVFile());
 
-        for (String courseInfo : reader.readCSVFile()) {
+        for (String courseInfo : dataList) {
             String[] data = courseInfo.split(",");
             String courseID = data[3];
             String courseName = data[4];
@@ -19,14 +21,14 @@ public class CourseFileHandler {
 
             Course course = new Course(courseID, courseName, numberOfCredits);
 
-            if (!courseAlreadyExist(courseID, courseName, numberOfCredits, listOfCourses)) {
+            if (!courseAlreadyExists(courseID, courseName, numberOfCredits, listOfCourses)) {
                 listOfCourses.add(course);
             }
         }
         return listOfCourses;
     }
 
-    private static boolean courseAlreadyExist(String courseID, String courseName,
+    private static boolean courseAlreadyExists(String courseID, String courseName,
                                               int numberOfCredits, List<Course> listOfCourses) {
         for (Course c : listOfCourses) {
             if (c.getCourseID().equals(courseID) ||

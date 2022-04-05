@@ -26,6 +26,7 @@ public class Course {
     }
 
     public String convertToCSVRow() {
-        return String.join(",", courseID, courseName, numberOfCredits + "\n");
+        return String.join(",", courseID,
+                courseName, numberOfCredits + "\n");
     }
 }

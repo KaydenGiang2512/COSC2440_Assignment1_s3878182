@@ -19,6 +19,7 @@ public class MenuDisplay {
         System.out.println("| 1/ View all students in the database                                            |");
         System.out.println("| 2/ View all courses in the database                                             |");
         System.out.println("| 3/ View all enrollments in the database                                         |");
+        System.out.println("| 4/ View a particular enrollment in the database                                 |");
         System.out.println("| 0/ Terminate all processes & quit the program                                   |");
         System.out.println("+---------------------------------------------------------------------------------+");
         System.out.print("> Your selection: ");
@@ -80,6 +81,13 @@ public class MenuDisplay {
                     TimeUnit.SECONDS.sleep(1);
                     AcademicManager admin = new AcademicManager();
                     System.out.println(admin.displayAllEnrollments());
+                    isRunning = false;
+                    TimeUnit.SECONDS.sleep(1);
+                    restartProgram();
+                }
+                case "4" -> {
+                    AcademicManager admin = new AcademicManager();
+                    System.out.println(admin.displayOneEnrollment());
                     isRunning = false;
                     TimeUnit.SECONDS.sleep(1);
                     restartProgram();
@@ -146,6 +154,7 @@ public class MenuDisplay {
             TimeUnit.SECONDS.sleep(1);
             userInterface();
         } else if (choice.equals("2")) {
+            System.out.println("To be implemented in future updates! Thank you for your patience");
             TimeUnit.SECONDS.sleep(1);
             userInterface();
         } else {
