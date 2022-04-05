@@ -10,6 +10,7 @@ import FileHandlers.StudentFileHandler;
 import java.util.ArrayList;
 
 public class AcademicManager implements StudentEnrollmentManager {
+
     @Override
     public boolean addNewEnrollment() {
         EnrollmentFileHandler efh = new EnrollmentFileHandler();

@@ -1,6 +1,8 @@
 package HelperPrograms;
 
 import AcademicManagement.AcademicManager;
+import FileHandlers.CourseFileHandler;
+import FileHandlers.StudentFileHandler;
 
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
@@ -67,7 +69,7 @@ public class MenuDisplay {
                     System.out.println(admin.displayAllStudents());
                     isRunning = false;
                     TimeUnit.SECONDS.sleep(1);
-                    restartProgram();
+                    userInterface();
                 }
                 case "2" -> {
                     System.out.println("\n*********************************");
@@ -78,7 +80,7 @@ public class MenuDisplay {
                     System.out.println(admin.displayAllCourses());
                     isRunning = false;
                     TimeUnit.SECONDS.sleep(1);
-                    restartProgram();
+                    userInterface();
                 }
                 case "3" -> {
                     System.out.println("\n*************************************");
@@ -89,49 +91,52 @@ public class MenuDisplay {
                     System.out.println(admin.displayAllEnrollments());
                     isRunning = false;
                     TimeUnit.SECONDS.sleep(1);
-                    restartProgram();
+                    userInterface();
                 }
                 case "4" -> {
                     AcademicManager admin = new AcademicManager();
                     System.out.println(admin.addNewEnrollment());
                     isRunning = false;
                     TimeUnit.SECONDS.sleep(1);
-                    restartProgram();
+                    userInterface();
                 }
                 case "5" -> {
                     AcademicManager admin = new AcademicManager();
                     System.out.println(admin.deleteExistingEnrollment());
                     isRunning = false;
                     TimeUnit.SECONDS.sleep(1);
-                    restartProgram();
+                    userInterface();
                 }
                 case "6" -> {
                     AcademicManager admin = new AcademicManager();
                     System.out.println(admin.displayOneEnrollment());
                     isRunning = false;
                     TimeUnit.SECONDS.sleep(1);
-                    restartProgram();
+                    userInterface();
                 }
                 case "7" -> {
                     AcademicManager admin = new AcademicManager();
                     System.out.println(admin.displayAllCoursesForStudentInSemester());
+                    CourseFileHandler.promptUserToSave();
                     isRunning = false;
                     TimeUnit.SECONDS.sleep(1);
-                    restartProgram();
+                    userInterface();
                 }
                 case "8" -> {
                     AcademicManager admin = new AcademicManager();
                     System.out.println(admin.displayAllStudentsInCourseInSemester());
+                    StudentFileHandler.promptUserToSave();
                     isRunning = false;
                     TimeUnit.SECONDS.sleep(1);
-                    restartProgram();
+                    userInterface();
                 }
                 case "9" -> {
                     AcademicManager admin = new AcademicManager();
                     System.out.println(admin.displayAllCoursesInSemester());
+                    CourseFileHandler.promptUserToSave();
                     isRunning = false;
                     TimeUnit.SECONDS.sleep(1);
-                    restartProgram();
+                    userInterface();
                 }
                 default -> {
                     System.out.println("\n***********************************************");
@@ -150,29 +155,6 @@ public class MenuDisplay {
         System.out.println("*****************************************");
         TimeUnit.SECONDS.sleep(1);
         System.exit(0);
-    }
-
-    private static void restartProgram () throws InterruptedException {
-        TimeUnit.SECONDS.sleep(1);
-        System.out.print("\nDo you wish to run this program again? (Y/N): ");
-        Scanner sc = new Scanner(System.in);
-        String restartChoice = sc.nextLine();
-
-        if (restartChoice.equalsIgnoreCase("y")) {
-            System.out.println("\n**************************************");
-            System.out.println("Restarting program... Please stand by!");
-            System.out.println("**************************************");
-            TimeUnit.SECONDS.sleep(1);
-            userInterface();
-        } else if (restartChoice.equalsIgnoreCase("n")) {
-            quitProgram();
-        } else {
-            System.out.println("\n****************************************");
-            System.out.println("Invalid command choice! Please try again");
-            System.out.println("****************************************");
-            TimeUnit.SECONDS.sleep(1);
-            restartProgram();
-        }
     }
 
     public static void selectCSVFileAsDatabase() throws InterruptedException {

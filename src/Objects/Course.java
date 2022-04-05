@@ -1,6 +1,6 @@
 package Objects;
 
-public class Course {
+public class Course implements Object {
     private final String courseID;
     private final String courseName;
     private final int numberOfCredits;
@@ -25,8 +25,8 @@ public class Course {
                 "+ course name: " + courseName + "\n" + "+ number of credits: " + numberOfCredits + "\n}" + "\n";
     }
 
+    @Override
     public String convertToCSVRow() {
-        return String.join(",", courseID,
-                courseName, numberOfCredits + "\n");
+        return String.join(",", courseID, courseName, numberOfCredits + "\n");
     }
 }

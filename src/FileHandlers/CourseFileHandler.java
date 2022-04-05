@@ -1,17 +1,28 @@
 package FileHandlers;
 
 import HelperPrograms.CSVReader;
+import HelperPrograms.MenuDisplay;
 import Objects.Course;
 
+import java.io.IOException;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class CourseFileHandler {
+    ArrayList<Course> allCourses = new ArrayList<>();
+
+    public void setAllCourses(ArrayList<Course> allCourses) {
+        this.allCourses = allCourses;
+    }
 
     public ArrayList<Course> populateCourseData() {
-        ArrayList<Course> listOfCourses = new ArrayList<>();
         CSVReader reader = new CSVReader();
         ArrayList<String> dataList = new ArrayList<>(reader.readCSVFile());
+        ArrayList<Course> listOfCourses = new ArrayList<>();
 
         for (String courseInfo : dataList) {
             String[] data = courseInfo.split(",");
@@ -37,5 +48,49 @@ public class CourseFileHandler {
             }
         }
         return false;
+    }
+
+    public void saveReportToCSV() {
+        String fileName = gatherFileNameFromUserInput();
+        try {
+            File csvFile = new File(fileName);
+            FileWriter writer = new FileWriter(csvFile);
+
+            if (allCourses.isEmpty()) {
+                System.out.println("No data retrieved! Please try again");
+                writer.close();
+            } else {
+                for (Course course : allCourses) {
+                    writer.append(course.convertToCSVRow());
+                }
+                writer.flush();
+                writer.close();
+                System.out.println("CSV file is successfully saved!");
+            }
+        } catch (IOException ioe) {
+            System.out.println("Failed to save file! Please try again");
+        }
+    }
+
+    public String gatherFileNameFromUserInput() {
+        System.out.print("Please enter desired file name (including '.csv'): ");
+        Scanner sc = new Scanner(System.in);
+
+        return sc.nextLine();
+    }
+
+    public static void promptUserToSave() throws InterruptedException {
+        System.out.print("Do you wish to save this report? (Y/N): ");
+        Scanner sc = new Scanner(System.in);
+        String choice = sc.nextLine();
+
+        if (choice.equalsIgnoreCase("y")) {
+            CourseFileHandler c = new CourseFileHandler();
+            c.saveReportToCSV();
+        }
+        else if (choice.equalsIgnoreCase("n")) {
+            TimeUnit.SECONDS.sleep(1);
+            MenuDisplay.userInterface();
+        }
     }
 }

@@ -1,6 +1,6 @@
 package Objects;
 
-public class StudentEnrollment {
+public class StudentEnrollment implements Object {
     private final Student student;
     private final Course course;
     private final String semester;
@@ -29,6 +29,7 @@ public class StudentEnrollment {
                 + "\n" + "  - Semester code: " + semester + "\n}" + "\n";
     }
 
+    @Override
     public String convertToCSVRow() {
         return String.join(",", student.getStudentID(), student.getStudentName(),
                 student.getBirthDate(), course.getCourseID(), course.getCourseName(),

@@ -1,6 +1,6 @@
 package Objects;
 
-public class Student {
+public class Student implements Object {
     private final String studentID;
     private final String studentName;
     private final String birthDate;
@@ -25,8 +25,8 @@ public class Student {
                 "+ student name: " + studentName + "\n" + "+ date of birth (MM/DD/YYYY): " + birthDate + "\n}" + "\n";
     }
 
+    @Override
     public String convertToCSVRow() {
-        return String.join(",", studentID,
-                studentName, birthDate + "\n");
+        return String.join(",", studentID, studentName, birthDate + "\n");
     }
 }

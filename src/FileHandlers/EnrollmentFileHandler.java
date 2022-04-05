@@ -10,9 +10,11 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class EnrollmentFileHandler {
+    ArrayList<StudentEnrollment> allEnrollments = populateEnrollmentData();
+
     public ArrayList<StudentEnrollment> populateEnrollmentData() {
-        ArrayList<StudentEnrollment> listOfEnrollments = new ArrayList<>();
         CSVReader reader = new CSVReader();
+        ArrayList<StudentEnrollment> listOfEnrollments = new ArrayList<>();
         ArrayList<String> dataList = new ArrayList<>(reader.readCSVFile());
 
         for (String enrollmentInfo : dataList) {
@@ -42,7 +44,6 @@ public class EnrollmentFileHandler {
     }
 
     public ArrayList<StudentEnrollment> populateOneEnrollmentFromData() throws InterruptedException {
-        ArrayList<StudentEnrollment> allEnrollments = populateEnrollmentData();
         ArrayList<StudentEnrollment> singleEnrollment = new ArrayList<>();
 
         String studentID = gatherStudentFromUserInput();
@@ -69,8 +70,6 @@ public class EnrollmentFileHandler {
     }
 
     public boolean addOne() {
-        ArrayList<StudentEnrollment> allEnrollments = populateEnrollmentData();
-
         String studentID = gatherStudentFromUserInput();
         String courseID = gatherCourseFromUserInput();
         String semester = gatherSemesterFromUserInput();
@@ -78,8 +77,7 @@ public class EnrollmentFileHandler {
         for (StudentEnrollment enrollment : allEnrollments) {
             if (enrollment.getStudent().getStudentID().equalsIgnoreCase(studentID)
                     && enrollment.getCourse().getCourseID().equalsIgnoreCase(courseID)
-                    && !enrollment.getSemester().equalsIgnoreCase(semester)) {
-                allEnrollments.add(enrollment);
+                    && enrollment.getSemester().equalsIgnoreCase(semester)) {
                 System.out.println("Enrollment is successfully added!");
                 return true;
             } else {
@@ -91,8 +89,6 @@ public class EnrollmentFileHandler {
     }
 
     public boolean deleteOne() {
-        ArrayList<StudentEnrollment> allEnrollments = populateEnrollmentData();
-
         String studentID = gatherStudentFromUserInput();
         String courseID = gatherCourseFromUserInput();
         String semester = gatherSemesterFromUserInput();
@@ -101,7 +97,6 @@ public class EnrollmentFileHandler {
             if (enrollment.getStudent().getStudentID().equalsIgnoreCase(studentID)
                     && enrollment.getCourse().getCourseID().equalsIgnoreCase(courseID)
                     && enrollment.getSemester().equalsIgnoreCase(semester)) {
-                allEnrollments.remove(enrollment);
                 System.out.println("Enrollment is successfully deleted!");
                 return true;
             } else {
@@ -113,8 +108,9 @@ public class EnrollmentFileHandler {
     }
 
     public ArrayList<Course> allCourseForStudentInSemester() throws InterruptedException {
-        ArrayList<StudentEnrollment> allEnrollments = populateEnrollmentData();
         ArrayList<Course> coursesForStudentInSemester = new ArrayList<>();
+        CourseFileHandler c = new CourseFileHandler();
+        c.setAllCourses(coursesForStudentInSemester);
 
         String studentID = gatherStudentFromUserInput();
         String semester = gatherSemesterFromUserInput();
@@ -133,8 +129,9 @@ public class EnrollmentFileHandler {
     }
 
     public ArrayList<Student> allStudentsInCourseInSemester() throws InterruptedException {
-        ArrayList<StudentEnrollment> allEnrollments = populateEnrollmentData();
         ArrayList<Student> studentsInCourseInSemester = new ArrayList<>();
+        StudentFileHandler s = new StudentFileHandler();
+        s.setAllStudents(studentsInCourseInSemester);
 
         String courseID = gatherCourseFromUserInput();
         String semester = gatherSemesterFromUserInput();
@@ -153,8 +150,9 @@ public class EnrollmentFileHandler {
     }
 
     public ArrayList<Course> allCoursesInSemester() throws InterruptedException {
-        ArrayList<StudentEnrollment> allEnrollments = populateEnrollmentData();
         ArrayList<Course> coursesInSemester = new ArrayList<>();
+        CourseFileHandler c = new CourseFileHandler();
+        c.setAllCourses(coursesInSemester);
 
         String semester = gatherSemesterFromUserInput();
 
