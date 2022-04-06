@@ -1,11 +1,14 @@
 package HelperPrograms;
 
+//Importing necessary libraries
 import java.io.IOException;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.util.ArrayList;
 
 public class CSVReader {
+
+    //This method reads the entire default.csv file line by line, then return and ArrayList of strings
     public ArrayList<String> readCSVFile() {
         ArrayList<String> rows = new ArrayList<>();
         String pathToCSV = "default.csv";

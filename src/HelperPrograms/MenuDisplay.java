@@ -1,13 +1,13 @@
 package HelperPrograms;
 
 import AcademicManagement.AcademicManager;
-import FileHandlers.CourseFileHandler;
-import FileHandlers.StudentFileHandler;
+import Objects.StudentEnrollment;
 
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class MenuDisplay {
+    //This method handles all user inputs and returns the corresponding actions by calling methods via a switch case
     public static void userInterface() throws InterruptedException {
         System.out.println("\n+---------------------------------------------------------------------------------+");
         System.out.println("| INITIALIZING ALL J.E.M.S PROCESSES...                                           |");
@@ -23,10 +23,12 @@ public class MenuDisplay {
         System.out.println("| 3/ View all enrollments in the database                                         |");
         System.out.println("| 4/ Add a new enrollment to the database                                         |");
         System.out.println("| 5/ Remove an existing enrollment from the database                              |");
-        System.out.println("| 6/ View a particular enrollment in the database                                 |");
-        System.out.println("| 7/ View all available courses for a particular student in a semester            |");
-        System.out.println("| 8/ View all students in a particular course in a semester                       |");
-        System.out.println("| 9/ View all available courses in a semester                                     |");
+        System.out.println("| 6/ View a particular student in the database                                    |");
+        System.out.println("| 7/ View a particular course in the database                                     |");
+        System.out.println("| 8/ View a particular enrollment in the database                                 |");
+        System.out.println("| 9/ View all available courses for a particular student in a semester            |");
+        System.out.println("| 10/ View all students in a particular course in a semester                      |");
+        System.out.println("| 11/ View all available courses in a semester                                    |");
         System.out.println("|                                                                                 |");
         System.out.println("| 0/ Terminate all processes & quit the program                                   |");
         System.out.println("+---------------------------------------------------------------------------------+");
@@ -34,8 +36,10 @@ public class MenuDisplay {
         Scanner inputScanner = new Scanner(System.in);
         String option = inputScanner.nextLine();
 
+        //boolean variable to prevent infinite repeat
         boolean isRunning = true;
 
+        //advanced switch case to handle all possible user inputs
         while (isRunning) {
             switch (option) {
                 case "0" -> {
@@ -95,46 +99,75 @@ public class MenuDisplay {
                 }
                 case "4" -> {
                     AcademicManager admin = new AcademicManager();
-                    System.out.println(admin.addNewEnrollment());
+                    String studentID = "";
+                    String courseID = "";
+                    String semester = "";
+                    StudentEnrollment e = new StudentEnrollment(admin.getOneStudent(studentID),
+                            admin.getOneCourse(courseID), semester);
+                    System.out.println(admin.addNewEnrollment(e));
                     isRunning = false;
                     TimeUnit.SECONDS.sleep(1);
                     userInterface();
                 }
                 case "5" -> {
                     AcademicManager admin = new AcademicManager();
-                    System.out.println(admin.deleteExistingEnrollment());
+                    String studentID = "";
+                    String courseID = "";
+                    String semester = "";
+                    StudentEnrollment e = new StudentEnrollment(admin.getOneStudent(studentID),
+                            admin.getOneCourse(courseID), semester);
+                    System.out.println(admin.deleteExistingEnrollment(e));
                     isRunning = false;
                     TimeUnit.SECONDS.sleep(1);
                     userInterface();
                 }
                 case "6" -> {
                     AcademicManager admin = new AcademicManager();
-                    System.out.println(admin.displayOneEnrollment());
+                    String studentID = "";
+                    System.out.println(admin.displayOneStudent(studentID));
                     isRunning = false;
                     TimeUnit.SECONDS.sleep(1);
                     userInterface();
                 }
                 case "7" -> {
                     AcademicManager admin = new AcademicManager();
-                    System.out.println(admin.displayAllCoursesForStudentInSemester());
-                    CourseFileHandler.promptUserToSave();
+                    String courseID = "";
+                    System.out.println(admin.displayOneCourse(courseID));
                     isRunning = false;
                     TimeUnit.SECONDS.sleep(1);
                     userInterface();
                 }
                 case "8" -> {
                     AcademicManager admin = new AcademicManager();
-                    System.out.println(admin.displayAllStudentsInCourseInSemester());
-                    StudentFileHandler.promptUserToSave();
+                    String studentID = "";
+                    String courseID = "";
+                    String semester = "";
+                    System.out.println(admin.displayOneEnrollment(studentID, courseID, semester));
                     isRunning = false;
                     TimeUnit.SECONDS.sleep(1);
                     userInterface();
                 }
                 case "9" -> {
                     AcademicManager admin = new AcademicManager();
-                    System.out.println(admin.displayAllCoursesInSemester());
-                    CourseFileHandler.promptUserToSave();
+                    System.out.println(admin.displayAllCoursesForStudentInSemester());
                     isRunning = false;
+                    admin.getCourseFileHandler().saveReportToCSV();
+                    TimeUnit.SECONDS.sleep(1);
+                    userInterface();
+                }
+                case "10" -> {
+                    AcademicManager admin = new AcademicManager();
+                    System.out.println(admin.displayAllStudentsInCourseInSemester());
+                    isRunning = false;
+                    admin.getStudentFileHandler().saveReportToCSV();
+                    TimeUnit.SECONDS.sleep(1);
+                    userInterface();
+                }
+                case "11" -> {
+                    AcademicManager admin = new AcademicManager();
+                    System.out.println(admin.displayAllCoursesInSemester());
+                    isRunning = false;
+                    admin.getCourseFileHandler().saveReportToCSV();
                     TimeUnit.SECONDS.sleep(1);
                     userInterface();
                 }
@@ -149,6 +182,7 @@ public class MenuDisplay {
         }
     }
 
+    //Static method to quit program if user selects the appropriate prompt
     private static void quitProgram () throws InterruptedException {
         System.out.println("\n*****************************************");
         System.out.println("Exiting program... goodbye Administrator!");
@@ -157,6 +191,7 @@ public class MenuDisplay {
         System.exit(0);
     }
 
+    //This method displays a sub-menu to get user input on database usage
     public static void selectCSVFileAsDatabase() throws InterruptedException {
         TimeUnit.SECONDS.sleep(1);
         System.out.println("\n+----------------------------------------------------------------+");

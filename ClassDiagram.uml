@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/iCare Center/IdeaProjects/COSC2440_Assignment1_s3878182</OriginalElement>
+  <nodes>
+    <node x="812.3175000000003" y="816.0">FileHandlers.EnrollmentFileHandler</node>
+    <node x="1203.7375000000004" y="525.0">HelperPrograms.CSVReader</node>
+    <node x="705.4375" y="1240.0">AcademicManagement.AcademicManager</node>
+    <node x="961.75" y="1880.0">UnitTest.AcademicManagerTest</node>
+    <node x="902.7375000000004" y="446.0">Objects.StudentEnrollment</node>
+    <node x="110.75" y="163.0">HelperPrograms.MenuDisplay</node>
+    <node x="1350.3175000000006" y="870.0">FileHandlers.StudentFileHandler</node>
+    <node x="505.44520833333405" y="106.0">Objects.Course</node>
+    <node x="417.75" y="870.0">FileHandlers.CourseFileHandler</node>
+    <node x="1344.695208333334" y="0.0">Objects.Object</node>
+    <node x="1716.1243750000003" y="152.0">HelperPrograms.CSVWriter</node>
+    <node x="1490.1243750000003" y="106.0">Objects.Student</node>
+    <node x="-271.92546583850964" y="163.0">Main.Main</node>
+    <node x="36.75" y="915.0">AcademicManagement.StudentEnrollmentManager</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="FileHandlers.EnrollmentFileHandler" target="Objects.Course" relationship="CREATE">
+      <point x="129.5" y="-160.0" />
+      <point x="1200.8175000000003" y="794.0" />
+      <point x="1162.945208333334" y="794.0" />
+      <point x="1162.945208333334" y="764.0" />
+      <point x="1193.2375000000004" y="764.0" />
+      <point x="1193.2375000000004" y="414.0" />
+      <point x="625.2375000000004" y="414.0" />
+      <point x="625.2375000000004" y="364.0" />
+      <point x="662.1118750000007" y="364.0" />
+      <point x="62.66666666666674" y="118.0" />
+    </edge>
+    <edge source="FileHandlers.EnrollmentFileHandler" target="HelperPrograms.CSVReader" relationship="CREATE">
+      <point x="129.5" y="-160.0" />
+      <point x="1200.8175000000003" y="794.0" />
+      <point x="1162.945208333334" y="794.0" />
+      <point x="1162.945208333334" y="744.0" />
+      <point x="1311.2375000000004" y="744.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="HelperPrograms.CSVWriter" target="Objects.Object" relationship="DEPENDENCY">
+      <point x="0.0" y="-72.0" />
+      <point x="1848.1243750000003" y="75.0" />
+      <point x="1485.695208333334" y="75.0" />
+      <point x="47.0" y="27.0" />
+    </edge>
+    <edge source="Objects.StudentEnrollment" target="Objects.Student" relationship="DEPENDENCY">
+      <point x="-93.33333333333331" y="-118.0" />
+      <point x="949.4041666666672" y="424.0" />
+      <point x="10.5" y="424.0" />
+      <point x="10.5" y="414.0" />
+      <point x="15.75" y="414.0" />
+      <point x="15.75" y="374.0" />
+      <point x="1524.4577083333336" y="374.0" />
+      <point x="-68.66666666666663" y="118.0" />
+    </edge>
+    <edge source="UnitTest.AcademicManagerTest" target="FileHandlers.EnrollmentFileHandler" relationship="TO_ONE">
+      <point x="-53.5" y="-83.0" />
+      <point x="1015.25" y="1859.0" />
+      <point x="830.5625" y="1859.0" />
+      <point x="830.5625" y="1849.0" />
+      <point x="491.19520833333405" y="1849.0" />
+      <point x="491.19520833333405" y="1208.0" />
+      <point x="723.4577083333336" y="1208.0" />
+      <point x="723.4577083333336" y="1158.0" />
+      <point x="941.8175000000003" y="1158.0" />
+      <point x="-129.5" y="160.0" />
+    </edge>
+    <edge source="AcademicManagement.AcademicManager" target="FileHandlers.EnrollmentFileHandler" relationship="CREATE">
+      <point x="135.375" y="-294.0" />
+      <point x="1021.3125" y="1218.0" />
+      <point x="1322.5" y="1218.0" />
+      <point x="1322.5" y="1208.0" />
+      <point x="1436.4875000000006" y="1208.0" />
+      <point x="1436.4875000000006" y="1158.0" />
+      <point x="1200.8175000000003" y="1158.0" />
+      <point x="129.5" y="160.0" />
+    </edge>
+    <edge source="UnitTest.AcademicManagerTest" target="AcademicManagement.AcademicManager" relationship="TO_ONE">
+      <point x="-53.5" y="-83.0" />
+      <point x="1015.25" y="1859.0" />
+      <point x="830.5625" y="1859.0" />
+      <point x="830.5625" y="1849.0" />
+      <point x="795.6875" y="1849.0" />
+      <point x="-90.25" y="294.0" />
+    </edge>
+    <edge source="AcademicManagement.StudentEnrollmentManager" target="Objects.StudentEnrollment" relationship="DEPENDENCY">
+      <point x="0.0" y="-61.0" />
+      <point x="217.25" y="794.0" />
+      <point x="121.75" y="794.0" />
+      <point x="121.75" y="714.0" />
+      <point x="949.4041666666672" y="714.0" />
+      <point x="-93.33333333333331" y="118.0" />
+    </edge>
+    <edge source="AcademicManagement.AcademicManager" target="FileHandlers.CourseFileHandler" relationship="TO_ONE">
+      <point x="45.125" y="-294.0" />
+      <point x="931.0625" y="1218.0" />
+      <point x="890.9375" y="1218.0" />
+      <point x="890.9375" y="1178.0" />
+      <point x="510.75" y="1178.0" />
+      <point x="-93.0" y="106.0" />
+    </edge>
+    <edge source="AcademicManagement.AcademicManager" target="Objects.StudentEnrollment" relationship="DEPENDENCY">
+      <point x="-135.375" y="-294.0" />
+      <point x="750.5625" y="1218.0" />
+      <point x="21.0" y="1218.0" />
+      <point x="21.0" y="1208.0" />
+      <point x="26.25" y="1208.0" />
+      <point x="26.25" y="794.0" />
+      <point x="121.75" y="794.0" />
+      <point x="121.75" y="714.0" />
+      <point x="949.4041666666672" y="714.0" />
+      <point x="-93.33333333333331" y="118.0" />
+    </edge>
+    <edge source="Objects.StudentEnrollment" target="Objects.Course" relationship="DEPENDENCY">
+      <point x="-93.33333333333331" y="-118.0" />
+      <point x="949.4041666666672" y="424.0" />
+      <point x="10.5" y="424.0" />
+      <point x="10.5" y="404.0" />
+      <point x="5.25" y="404.0" />
+      <point x="5.25" y="394.0" />
+      <point x="536.7785416666675" y="394.0" />
+      <point x="-62.66666666666663" y="118.0" />
+    </edge>
+    <edge source="FileHandlers.EnrollmentFileHandler" target="Objects.Student" relationship="CREATE">
+      <point x="129.5" y="-160.0" />
+      <point x="1200.8175000000003" y="794.0" />
+      <point x="1162.945208333334" y="794.0" />
+      <point x="1162.945208333334" y="764.0" />
+      <point x="1546.25" y="764.0" />
+      <point x="1546.25" y="424.0" />
+      <point x="1632.9577083333338" y="424.0" />
+      <point x="1632.9577083333338" y="414.0" />
+      <point x="1661.7910416666668" y="414.0" />
+      <point x="68.66666666666674" y="118.0" />
+    </edge>
+    <edge source="AcademicManagement.AcademicManager" target="Objects.Course" relationship="DEPENDENCY">
+      <point x="-135.375" y="-294.0" />
+      <point x="750.5625" y="1218.0" />
+      <point x="21.0" y="1218.0" />
+      <point x="21.0" y="1208.0" />
+      <point x="0.0" y="1208.0" />
+      <point x="0.0" y="424.0" />
+      <point x="5.25" y="424.0" />
+      <point x="5.25" y="394.0" />
+      <point x="536.7785416666675" y="394.0" />
+      <point x="-62.66666666666663" y="118.0" />
+    </edge>
+    <edge source="FileHandlers.EnrollmentFileHandler" target="Objects.StudentEnrollment" relationship="TO_MANY">
+      <point x="-129.5" y="-160.0" />
+      <point x="941.8175000000003" y="724.0" />
+      <point x="1042.7375000000004" y="724.0" />
+      <point x="0.0" y="118.0" />
+    </edge>
+    <edge source="Objects.Course" target="Objects.Object" relationship="REALIZATION">
+      <point x="0.0" y="-118.0" />
+      <point x="599.445208333334" y="85.0" />
+      <point x="946.1118750000007" y="85.0" />
+      <point x="946.1118750000007" y="75.0" />
+      <point x="1391.695208333334" y="75.0" />
+      <point x="-47.0" y="27.0" />
+    </edge>
+    <edge source="AcademicManagement.AcademicManager" target="FileHandlers.EnrollmentFileHandler" relationship="TO_ONE">
+      <point x="45.125" y="-294.0" />
+      <point x="931.0625" y="1218.0" />
+      <point x="890.9375" y="1218.0" />
+      <point x="890.9375" y="1188.0" />
+      <point x="723.4577083333336" y="1188.0" />
+      <point x="723.4577083333336" y="1158.0" />
+      <point x="941.8175000000003" y="1158.0" />
+      <point x="-129.5" y="160.0" />
+    </edge>
+    <edge source="AcademicManagement.AcademicManager" target="Objects.Student" relationship="DEPENDENCY">
+      <point x="-135.375" y="-294.0" />
+      <point x="750.5625" y="1218.0" />
+      <point x="21.0" y="1218.0" />
+      <point x="21.0" y="404.0" />
+      <point x="15.75" y="404.0" />
+      <point x="15.75" y="374.0" />
+      <point x="1524.4577083333336" y="374.0" />
+      <point x="-68.66666666666663" y="118.0" />
+    </edge>
+    <edge source="Objects.StudentEnrollment" target="Objects.Student" relationship="TO_ONE">
+      <point x="0.0" y="-118.0" />
+      <point x="1042.7375000000004" y="404.0" />
+      <point x="1621.9577083333338" y="404.0" />
+      <point x="1621.9577083333338" y="394.0" />
+      <point x="1593.1243750000003" y="394.0" />
+      <point x="0.0" y="118.0" />
+    </edge>
+    <edge source="UnitTest.AcademicManagerTest" target="AcademicManagement.AcademicManager" relationship="CREATE">
+      <point x="53.5" y="-83.0" />
+      <point x="1122.25" y="1859.0" />
+      <point x="1333.0" y="1859.0" />
+      <point x="1333.0" y="1849.0" />
+      <point x="976.1875" y="1849.0" />
+      <point x="90.25" y="294.0" />
+    </edge>
+    <edge source="UnitTest.AcademicManagerTest" target="FileHandlers.EnrollmentFileHandler" relationship="CREATE">
+      <point x="53.5" y="-83.0" />
+      <point x="1122.25" y="1859.0" />
+      <point x="1333.0" y="1859.0" />
+      <point x="1333.0" y="1849.0" />
+      <point x="1436.4875000000006" y="1849.0" />
+      <point x="1436.4875000000006" y="1158.0" />
+      <point x="1200.8175000000003" y="1158.0" />
+      <point x="129.5" y="160.0" />
+    </edge>
+    <edge source="UnitTest.AcademicManagerTest" target="Objects.StudentEnrollment" relationship="CREATE">
+      <point x="53.5" y="-83.0" />
+      <point x="1122.25" y="1859.0" />
+      <point x="1333.0" y="1859.0" />
+      <point x="1333.0" y="1849.0" />
+      <point x="1758.8175000000006" y="1849.0" />
+      <point x="1758.8175000000006" y="714.0" />
+      <point x="1487.0" y="714.0" />
+      <point x="1487.0" y="704.0" />
+      <point x="1136.0708333333337" y="704.0" />
+      <point x="93.33333333333326" y="118.0" />
+    </edge>
+    <edge source="FileHandlers.CourseFileHandler" target="Objects.Course" relationship="CREATE">
+      <point x="93.0" y="-106.0" />
+      <point x="696.75" y="794.0" />
+      <point x="609.25" y="794.0" />
+      <point x="609.25" y="414.0" />
+      <point x="625.2375000000004" y="414.0" />
+      <point x="625.2375000000004" y="364.0" />
+      <point x="662.1118750000007" y="364.0" />
+      <point x="62.66666666666674" y="118.0" />
+    </edge>
+    <edge source="FileHandlers.CourseFileHandler" target="HelperPrograms.CSVReader" relationship="CREATE">
+      <point x="93.0" y="-106.0" />
+      <point x="696.75" y="794.0" />
+      <point x="609.25" y="794.0" />
+      <point x="609.25" y="734.0" />
+      <point x="1311.2375000000004" y="734.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="Objects.StudentEnrollment" target="Objects.Course" relationship="TO_ONE">
+      <point x="0.0" y="-118.0" />
+      <point x="1042.7375000000004" y="394.0" />
+      <point x="614.2375000000004" y="394.0" />
+      <point x="614.2375000000004" y="364.0" />
+      <point x="599.445208333334" y="364.0" />
+      <point x="0.0" y="118.0" />
+    </edge>
+    <edge source="AcademicManagement.AcademicManager" target="FileHandlers.StudentFileHandler" relationship="CREATE">
+      <point x="135.375" y="-294.0" />
+      <point x="1021.3125" y="1218.0" />
+      <point x="1322.5" y="1218.0" />
+      <point x="1322.5" y="1168.0" />
+      <point x="1648.8175000000006" y="1168.0" />
+      <point x="99.5" y="106.0" />
+    </edge>
+    <edge source="FileHandlers.StudentFileHandler" target="Objects.Student" relationship="TO_MANY">
+      <point x="-99.5" y="-106.0" />
+      <point x="1449.8175000000006" y="774.0" />
+      <point x="1621.9577083333338" y="774.0" />
+      <point x="1621.9577083333338" y="394.0" />
+      <point x="1593.1243750000003" y="394.0" />
+      <point x="0.0" y="118.0" />
+    </edge>
+    <edge source="AcademicManagement.AcademicManager" target="FileHandlers.CourseFileHandler" relationship="CREATE">
+      <point x="135.375" y="-294.0" />
+      <point x="1021.3125" y="1218.0" />
+      <point x="1322.5" y="1218.0" />
+      <point x="1322.5" y="1168.0" />
+      <point x="696.75" y="1168.0" />
+      <point x="93.0" y="106.0" />
+    </edge>
+    <edge source="Objects.Student" target="Objects.Object" relationship="REALIZATION">
+      <point x="0.0" y="-118.0" />
+      <point x="1593.1243750000003" y="85.0" />
+      <point x="946.1118750000007" y="85.0" />
+      <point x="946.1118750000007" y="75.0" />
+      <point x="1391.695208333334" y="75.0" />
+      <point x="-47.0" y="27.0" />
+    </edge>
+    <edge source="Objects.StudentEnrollment" target="Objects.Object" relationship="REALIZATION">
+      <point x="93.33333333333337" y="-118.0" />
+      <point x="1136.0708333333337" y="384.0" />
+      <point x="946.1118750000007" y="384.0" />
+      <point x="946.1118750000007" y="75.0" />
+      <point x="1391.695208333334" y="75.0" />
+      <point x="-47.0" y="27.0" />
+    </edge>
+    <edge source="AcademicManagement.AcademicManager" target="AcademicManagement.StudentEnrollmentManager" relationship="REALIZATION">
+      <point x="-45.125" y="-294.0" />
+      <point x="840.8125" y="1198.0" />
+      <point x="217.25" y="1198.0" />
+      <point x="0.0" y="61.0" />
+    </edge>
+    <edge source="AcademicManagement.AcademicManager" target="FileHandlers.StudentFileHandler" relationship="TO_ONE">
+      <point x="45.125" y="-294.0" />
+      <point x="931.0625" y="1218.0" />
+      <point x="890.9375" y="1218.0" />
+      <point x="890.9375" y="1178.0" />
+      <point x="1449.8175000000006" y="1178.0" />
+      <point x="-99.5" y="106.0" />
+    </edge>
+    <edge source="FileHandlers.CourseFileHandler" target="Objects.Course" relationship="TO_MANY">
+      <point x="-93.0" y="-106.0" />
+      <point x="510.75" y="794.0" />
+      <point x="598.25" y="794.0" />
+      <point x="598.25" y="404.0" />
+      <point x="614.2375000000004" y="404.0" />
+      <point x="614.2375000000004" y="364.0" />
+      <point x="599.445208333334" y="364.0" />
+      <point x="0.0" y="118.0" />
+    </edge>
+    <edge source="FileHandlers.StudentFileHandler" target="HelperPrograms.CSVReader" relationship="CREATE">
+      <point x="99.5" y="-106.0" />
+      <point x="1648.8175000000006" y="794.0" />
+      <point x="1561.7077083333338" y="794.0" />
+      <point x="1561.7077083333338" y="724.0" />
+      <point x="1311.2375000000004" y="724.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="FileHandlers.StudentFileHandler" target="Objects.Student" relationship="CREATE">
+      <point x="99.5" y="-106.0" />
+      <point x="1648.8175000000006" y="794.0" />
+      <point x="1561.7077083333338" y="794.0" />
+      <point x="1561.7077083333338" y="784.0" />
+      <point x="1632.9577083333338" y="784.0" />
+      <point x="1632.9577083333338" y="414.0" />
+      <point x="1661.7910416666668" y="414.0" />
+      <point x="68.66666666666674" y="118.0" />
+    </edge>
+    <edge source="FileHandlers.EnrollmentFileHandler" target="Objects.StudentEnrollment" relationship="CREATE">
+      <point x="129.5" y="-160.0" />
+      <point x="1200.8175000000003" y="794.0" />
+      <point x="1162.945208333334" y="794.0" />
+      <point x="1162.945208333334" y="754.0" />
+      <point x="1487.0" y="754.0" />
+      <point x="1487.0" y="704.0" />
+      <point x="1136.0708333333337" y="704.0" />
+      <point x="93.33333333333326" y="118.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.3199406121516674" showDependencies="true" x="1119.5" y="571.3578924823303" />
+  <SelectedNodes>
+    <node>Main.Main</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
